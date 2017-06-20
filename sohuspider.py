@@ -39,9 +39,6 @@ def crawl_p(num_page=100,root=[]):
     return news
 if __name__ == '__main__':
     st=time.time()
-    utext=crawl_p(num_page=get_num_page())
-    dur=time.time()-st
-    num=len(utext.split('\n'))
-    print('Crawled '+str(num)+' title in '+str(dur)+' seconds.\nAverage cost: '+str(num/dur)+'title/s.')
-    with open('sohu_title.txt','w') as f:
-        f.write(utext)
+    news=crawl_p(num_page=get_num_page())
+    with open('sina_news.pkl','wb') as f:
+        pickle.dump(news,f)
